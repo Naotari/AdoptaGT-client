@@ -1,0 +1,32 @@
+.Admin__Main {
+    padding: 10px 0px 0px 0px;
+    display: flex;
+    justify-content: left ;
+}
+
+.Admin--Tag__Section {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 50px 0px 10px;
+    width: 300px;
+    height: 700px;
+}
+.Admin--Tag__Button {
+    font-size: large;
+    border: 0;
+    background-color: white;
+    margin: 5px;
+    height: 40px;
+}
+.Admin--Tag__Button:hover {
+        background-color: var(--brigth-gray);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Admin--Tables__Section {
+    background-color: aqua;
+    width: 75%;
+}

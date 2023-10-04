@@ -1,0 +1,38 @@
+.Users__Main {
+    position: relative;
+}
+.Users__Section__Title__Bar{
+    background-color: rgb(190, 190, 190);
+    display: flex;
+    border: 2px solid black;
+}
+
+.User__List__Box {
+    background-color: aliceblue;
+    border-right: 2px solid black;
+    display: flex;
+}
+
+.Space_Table--User{
+    width: 20%;
+    border-right: 2px solid black;
+}
+.Space_Table--Name{
+    width: 25%;
+    border-right: 2px solid black;
+}
+.Space_Table--Email{
+    width: 25%;
+    border-right: 2px solid black;
+}
+.Space_Table--Role{
+    width: 10%;
+    border-right: 2px solid black;
+}
+.Space_Table--State{
+    width: 10%;
+    border-right: 2px solid black;
+}
+.Space_Table--Options{
+    width: 10%;
+}

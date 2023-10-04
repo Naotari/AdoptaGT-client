@@ -1,0 +1,66 @@
+.Post_Main {
+    border-radius: 10px;
+    margin: 10px;
+    width: 700px;
+    background-color: rgb(255, 255, 255);
+}
+
+.Post_Main_User_Section{
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+}
+
+.Post_Main_Image {
+    height: 70px;
+    width: 70px; /* solo para prueba */
+    border-radius: 35px;
+}
+.Post_Main_User_Section_User {
+    margin: 0px 15px;
+    font-weight: 600;
+}
+.Post_Main_User_Section_Date {
+    margin: 5px 15px;
+    color: grey;
+}
+
+.Post_Main_Content_Section_Text {
+    margin: 15px;
+}
+.Post_Main_Content_Section_Image_Box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    width: 100%;
+}
+
+.Post_Main_Content_Section_Image {
+    max-height: 625px;
+    max-width: 100%;
+}
+
+.Post_Main_Content_Info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    /* background-color: bisque; */
+}
+
+.Post_Main_Content_Info_Number{
+    margin: 5px 50px;
+
+}
+
+.Post_Main_Content_Actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background-color: coral; */
+}
+
+.Post_Main_Content_Actions_Buttons {
+    margin: 5px 50px;
+}

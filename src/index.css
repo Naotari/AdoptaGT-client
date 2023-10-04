@@ -1,0 +1,17 @@
+:root {
+  --main-color: #228F88;
+  --second-color: #FF008D;
+  --soft-color: #68D4CE;
+  --soft-white: #F7F4E7;
+  --brigth-gray: rgb(235, 235, 235);
+  --gray-2: rgb(200, 200, 200);
+  --gray: rgb(128, 128, 128);
+}
+
+
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: var(--brigth-gray);
+}

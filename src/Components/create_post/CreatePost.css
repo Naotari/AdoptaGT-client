@@ -1,0 +1,21 @@
+.CreatePost_Main{
+    position: relative;
+}
+.CreatePost_Button {
+    background-color: white;
+    border: 0px;
+    height: 50px;
+    width: 700px;
+    margin: 10px;
+    border-radius: 10px;
+    color: grey;
+    font-size: medium;
+    display: flex;
+    align-items: center;
+
+}
+.CreatePost_Button:hover {
+    background-color: rgb(200, 200, 200);
+    border: solid rgb(170, 170, 170);
+    border-width: 0 1px 1px 0;
+}

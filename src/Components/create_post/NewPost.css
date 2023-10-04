@@ -1,0 +1,127 @@
+.NewPostWindow_Main {
+    background-color: white;
+    border-radius: 10px;
+    color: grey;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    max-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px black;  
+}
+
+.NewPostWindow__Posting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(201, 201, 201, 0.5);
+    border-radius: 10px;
+    color: black;
+    font-size: 25px;
+}
+
+.LoadingRotation {
+    position: relative;
+    animation: rotate 2s linear infinite;
+    font-size: 30px;
+}
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+.NewPostWindow_Title {
+    width: calc(100% - 10px);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    font-size: 30px;
+    padding: 5px 5px;
+}
+.NewPostWindow_Close {
+    border-radius: 20px;
+    border: 2px solid rgb(241, 241, 241);
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.NewPostWindow_Content {
+    width: 100%;
+    display: flex;
+}
+.NewPostWindow_Form {
+    width: 100%;
+}
+.NewPostWindow--description__Box {
+    background-color: rgb(221, 221, 221);
+    border: 0;
+    width: calc(100% - 20px);
+    height: 200px;
+    resize: none;
+    padding: 10px;
+    font-size: 17px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    outline: none;
+}
+.NewPostWindow_Content_Section_Image_Box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--gray);
+    width: 100%;
+}
+
+.NewPostWindow_Content_Section_Image {
+    max-height: 350px;
+    max-width: 100%;
+}
+.Creation_Image{
+    max-width: 500px;
+    max-height: 200px;
+}
+.NewPostWindow--test {
+    width: 100%;
+}
+
+.NewPostWindow--BelowOptions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.NewPostWindow--ImageLabel {
+    font-size: 40px;
+    cursor: pointer;
+}
+.NewPostWindow--ImageButton {
+    display: none;
+}
+
+.Over_Image {
+    position: absolute;
+    right: 0;
+    margin: 5px;
+    height: 40px;
+}
+.NewPostWindow_UploadButton{
+    border-radius: 20px;
+    border: 0;
+    background-color: var(--soft-color);
+    color: var(--soft-white);
+    cursor: pointer;
+    width: 200px;
+}:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
+}

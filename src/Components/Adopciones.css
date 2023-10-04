@@ -1,0 +1,10 @@
+.Adopciones_Main {
+    display: flex;
+    justify-content: center;
+}
+.Adopciones_Second{
+    max-width: 960px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

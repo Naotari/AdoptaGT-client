@@ -1,0 +1,20 @@
+.IndividualAdoption__Main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.IndividualAdoption__Second {
+    border-radius: 10px;
+    margin: 10px;
+    width: 700px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.IndividualAdoption__Image {
+    margin-top: 10px;
+    max-height: 625px;
+    max-width: 680px;
+    border-radius: 10px;
+}

@@ -1,0 +1,45 @@
+.NavBar_Main {
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+.NavBar_Icon {
+    height: 60px;
+    margin-left: 10px;
+}
+
+.NavBar_Links {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    justify-content: space-between;
+}
+
+.NavBar__TextFormat{
+    color: var(--soft-white);
+    font-size: 20px;
+    margin: 0;
+}
+.NavBar__TextFormat__Box {
+    text-decoration: none;
+}
+.UserBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.UserIcon {
+    margin-right: 10px;
+    border-radius: 30px;
+    background-color: var(--soft-white);
+}
+.NavBar__User--Default {
+    font-size: 60px;
+    color: var(--soft-white);
+    margin: 0 10px 0 10px;
+}

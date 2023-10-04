@@ -1,0 +1,143 @@
+.NewAdoptionWindow_Main {
+    background-color: white;
+    border-radius: 10px;
+    color: grey;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    min-width: 300px;
+    max-width: 700px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px black;
+}
+.NewAdoptionWindow__Posting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(201, 201, 201, 0.5);
+    border-radius: 10px;
+    color: black;
+    font-size: 25px;
+}
+
+.LoadingRotation {
+    position: relative;
+    animation: rotate 2s linear infinite;
+    font-size: 30px;
+}
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+.NewAdoptionWindow_Title {
+    width: calc(100% - 10px);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    font-size: 30px;
+    padding: 5px 5px;
+}
+.NewAdoptionWindow_Close {
+    border-radius: 20px;
+    border: 2px solid rgb(241, 241, 241);
+    color: var(--gray);
+    cursor: pointer;
+}
+.NewAdoptionWindow_Form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.NewAdoptionWindow_Form__SubBox {
+    display: flex;
+    width: 100%;
+}
+.NewAdoptionWindow_Form__LeftBox {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    padding: 10px;
+}
+.NewAdoptionWindow__InputBox {
+    border: none;
+    border-bottom: 2px solid var(--gray);
+    outline: none;
+    margin-bottom: 10px;
+}
+.NewAdoptionWindow--description__Box {
+    background-color: rgb(221, 221, 221);
+    border: 0;
+    width: calc(100% - 20px);
+    height: 120px; /* cambiar */
+    resize: none;
+    padding: 10px;
+    font-size: 17px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    outline: none;
+}
+.NewAdoptionWindow_Content_Section_Image_Box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+}
+
+.NewAdoptionWindow_Content_Section_Image {
+    max-height: 380px;
+    max-width: 100%;
+}
+
+
+.Over_Image {
+    position: absolute;
+    right: 0;
+    margin: 5px;
+    height: 40px;
+}
+
+.NewAdoptionWindow--BelowOptions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.NewAdoptionWindow--ImageLabel {
+    font-size: 40px;
+    cursor: pointer;
+}
+.NewAdoptionWindow--ImageButton {
+    display: none;
+}
+.NewAdoptionWindow_UploadButton{
+    border-radius: 20px;
+    border: 0;
+    background-color: var(--soft-color);
+    color: var(--soft-white);
+    cursor: pointer;
+    width: 200px;
+}:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
+}
+.NewAdoptionWindow__Warning {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 18px 0 0;
+    font-size: 9px;
+    color: red;
+}

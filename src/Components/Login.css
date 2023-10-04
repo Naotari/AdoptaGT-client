@@ -1,0 +1,44 @@
+.Login_Main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.Login__Form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+
+    color: grey;
+    font-size: 20px;
+}
+
+.Login__Tittle {
+    font-size: 30px;
+}
+
+.Login__InputBox {
+    border: none;
+    border-bottom: 2px solid var(--gray);
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.login__UploadButton{
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    border: 0;
+    background-color: var(--soft-color);
+    color: var(--soft-white);
+    cursor: pointer;
+    width: 200px;
+}:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
+}
