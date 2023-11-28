@@ -1,7 +1,7 @@
 import "./Login.css"
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
 
 const Login = () => {
 
@@ -22,7 +22,7 @@ const Login = () => {
             }
             const response = await axios.post("users/login", loginUser)
             if (response.data.status === "ok") {
-                swal({
+                Swal.fire({
                     text: "Accediendo",
                 });
                 window.localStorage.setItem("token", response.data.accessToken);
@@ -30,16 +30,15 @@ const Login = () => {
             }
             else {
                 const responseDB = response.data.error
-                console.log(responseDB);
                 if (responseDB === "User not found") {
-                    swal({
+                    Swal.fire({
                         text: "No se encontro el usuario",
                         icon: "error",
                         timer: 5000,
                     });
                 }
-                else if (responseDB === "Wrong credentials") {
-                    swal({
+                else if (responseDB === "Incorrect password") {
+                    Swal.fire({
                         text: "Contraseña incorrecta",
                         icon: "error",
                         timer: 5000,

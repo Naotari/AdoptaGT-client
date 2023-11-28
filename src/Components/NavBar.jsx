@@ -14,7 +14,7 @@ const NavBar = () => {
         if (tokenObject.token === undefined) {
             setLogged(false)
         } else {
-            console.log("entra aqui");
+            // console.log("entra aqui");
             const response = await axios.post("users/verify", tokenObject)
             //here I need to create the redirect when the user was not found.
             const data = await axios.get(`users/${response.data.idUser}`)

@@ -28,7 +28,7 @@ const Posts = () => {
 
     useEffect(() => {
         getPostsfromAPI();
-        console.log("Entra aqui");
+        // console.log("Entra aqui");
     }, []);
 
     useEffect(() => {

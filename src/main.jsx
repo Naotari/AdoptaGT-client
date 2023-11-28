@@ -4,7 +4,6 @@ import App from './App'
 import './index.css'
 import { BrowserRouter } from "react-router-dom";
 import axios from 'axios';
-import { CloudinaryContext } from 'cloudinary-react';
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 

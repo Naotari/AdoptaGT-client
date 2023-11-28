@@ -15,10 +15,40 @@
     height: 700px;
 }
 
+.Profile__Image--Box {
+    position: relative;
+}
 .Profile__Image {
     margin: 5%;
     max-width: 90%;
+    border-radius: 4px;
 }
+.Profile__Image--Edit__Button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 30px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 50%;
+}
+.Profile__Image--Edit__Button:hover {
+    opacity: 100%;
+}
+
+.Profile__Image--Input {
+    display: none;
+}
+
+.Profile__Image--Uploading {
+    position: absolute !important; 
+    left: 33%;
+    top: 33%;
+    font-size: 100px !important;
+}
+
 .Profile_first_Column__Name {
     text-align: center;
     font-size: 35px;

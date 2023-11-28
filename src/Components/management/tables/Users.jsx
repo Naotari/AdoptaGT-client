@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Users.css"
 import axios from "axios";
 import Edit from "../Edit";
+import Swal from 'sweetalert2'
 
 
 const Users = () => {
@@ -23,7 +24,7 @@ const Users = () => {
 
     const deleteHandler = (e) => {
         console.log(e.target.value);
-        swal({
+        Swal.fire({
             title: "¿Estas seguro?",
             text: "Una vez eliminada la cuenta ya no se puede Recuperar.",
             icon: "warning",
@@ -33,11 +34,11 @@ const Users = () => {
             .then((willDelete) => {
             if (willDelete) {
                 deleteUser(e.target.value)
-                swal("La cuenta fue eliminada", {
+                Swal("La cuenta fue eliminada", {
                 icon: "success",
                 });
             } else {
-                swal("No se elimino la cuenta");
+                Swal("No se elimino la cuenta");
             }
         });
     }

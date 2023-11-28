@@ -1,0 +1,98 @@
+.ProfileInformation__Main {
+    background-color: white;
+    border-radius: 10px;
+    height: 550px;
+    min-width: 700px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.ProfileInformation__Tittle {
+    margin: 0;
+    font-size: var(--tittle);
+    font-weight: 600;
+}
+.ProfileInformation__InfoSection {
+    display: flex;
+    align-items: center;
+    background-color: var(--brigth-gray);
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 0px 10px 0px 5px;
+    height: 40px;
+}
+.move-right {
+    margin-left: auto; /* Esto mueve el span a la derecha */
+}
+  
+.profileInformation__InfoSection__Text {
+    margin: 0 0 0 5px;
+
+}
+.ProfileInformation__InfoSection__Input {
+    border: 0;
+    background-color: var(--brigth-gray);
+    border-bottom: 2px solid var(--gray-2);
+    font-size: 16px;
+    width: 250px;
+    margin-left: 4px;
+    padding-top: 8px;
+}
+.Pointing {
+    cursor: pointer;
+}
+
+.ProfileInformation__LowerOptions__Box {
+    /* background-color: aqua; */
+    margin-top: 30px;
+    height: 290px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.ProfileInformation__LowerOptions__Section{
+    height: 100%;
+    width: 48%;
+    /* background-color: burlywood; */
+    display: flex;
+    align-items: end;
+}
+
+.ProfileInformation__LowerOptions__InputsBox {
+    background-color: var(--soft-color);
+    border-radius: 10px;
+    height: 270px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+.ProfileInformation__LowerOptions__Inputs {
+    border: 0;
+    border-bottom: 2px solid var(--gray-2);
+}
+
+.ProfileInformation__InputsBox__Warning {
+    margin: 0 0 5px 0;
+    font-size: 10px;
+    color: red;
+}
+
+.ProfileInformation__LowerOptions__Buttons {
+    font-size: 15px;
+    background-color: var(--brigth-gray);
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
+    filter: brightness(100%);
+}
+.ProfileInformation__LowerOptions__Buttons:hover {
+    filter: brightness(80%);
+}
+
+.Delete__Button {
+    background-color: rgb(255, 82, 82);
+}
