@@ -79,11 +79,19 @@
     outline: none;
     margin-bottom: 10px;
 }
+
+.NewAdoptionWindow_Form__AgeSection {
+ display: flex;
+}
+
+.NewAdoptionWindow__AgeBox {
+    width: 50px;
+}
 .NewAdoptionWindow--description__Box {
     background-color: rgb(221, 221, 221);
     border: 0;
     width: calc(100% - 20px);
-    height: 120px; /* cambiar */
+    height: 109px; /* cambiar */
     resize: none;
     padding: 10px;
     font-size: 17px;

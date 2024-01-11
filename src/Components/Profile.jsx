@@ -28,8 +28,8 @@ const Profile = () => {
         const data = await axios.get(`users/${response.data.idUser}`)
         setUserData(data.data)
         // console.log(data.data);
-        if(data.data.role === "admin") {setSepecialButton(<button onClick={displayAdminPanelHandler}>Perfil Administrativo</button>)}
-        else if(data.data.role === "moderator") {setSepecialButton(<button onClick={displayModPanelHandler}>Perfil de Moderador</button>)}
+        if(data.data.role === "admin") {setSepecialButton(<button  className="Profile_first_Column__Button" style={{backgroundColor: "#68D4CE", borderRadius: "10px"}} onClick={displayAdminPanelHandler}>Perfil Administrativo</button>)}
+        else if(data.data.role === "moderator") {setSepecialButton(<button  className="Profile_first_Column__Button" onClick={displayModPanelHandler}>Perfil de Moderador</button>)}
     };
 
     const userImageHandler = async(event) => {

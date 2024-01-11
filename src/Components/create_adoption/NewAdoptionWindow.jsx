@@ -12,12 +12,13 @@ const NewAdoptionWindow = (props) => {
         sex: "default",
         vaccines: "",
         text: "",
+        phone: 0,
     })
     const [imageCloud, setImageCloud] = useState("")
     const [posting, setPosting] = useState(false)
     const [submitButtonState, setsubmitButtonState] = useState(true)
 
-    const AdoptionInformationChangeHandler = (e) => {
+    const AdoptionInformationChangeHandler = (e) => { //check if any of the inputs where changed
         // console.log(e.target.name);
         if (e.target.id === "name") {
             setAdoptionInformation({ ...adoptionInformation, name: e.target.value })
@@ -36,6 +37,9 @@ const NewAdoptionWindow = (props) => {
         } else if (e.target.id === "description") {
             console.log(e.target.value);
             setAdoptionInformation({ ...adoptionInformation, text: e.target.value })
+        } else if (e.target.id === "phone") {
+            console.log(e.target.value);
+            setAdoptionInformation({ ...adoptionInformation, phone: e.target.value })
         }
     }
     const closeNewAdoptionHandler = () => {
@@ -75,6 +79,7 @@ const NewAdoptionWindow = (props) => {
                 years: adoptionInformation.years,
                 text: adoptionInformation.text,
                 vaccines: adoptionInformation.vaccines,
+                phone: adoptionInformation.phone,
             }
             const responseAPI = await axios.post("/adoptions", adoptionCreation)
             console.log(responseAPI);
@@ -87,13 +92,14 @@ const NewAdoptionWindow = (props) => {
         }
     }
  
-    useEffect(() => {
+    useEffect(() => { //Verify the information of the inputs to enable the post button
        if (adoptionInformation.name === "") setsubmitButtonState(true)
        else if (adoptionInformation.age === "0") setsubmitButtonState(true)
        else if (adoptionInformation.sex === "default") setsubmitButtonState(true)
        else if (adoptionInformation.vaccines === "") setsubmitButtonState(true)
        else if (adoptionInformation.text === "") setsubmitButtonState(true)
        else if (imageCloud === "") setsubmitButtonState(true)
+       else if (adoptionInformation.phone <= 9999999 || adoptionInformation.phone > 99999999) setsubmitButtonState(true)
        else setsubmitButtonState(false)
     }, [adoptionInformation, imageCloud])
 
@@ -120,14 +126,16 @@ const NewAdoptionWindow = (props) => {
                         <input id="name" name="name" placeholder="Nombre de la mascota" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.name}></input>
 
                         <label htmlFor="age">Edad</label>
-                        <div>
-                                <input type="radio" id="years_true" name="years" value="true"  onChange={AdoptionInformationChangeHandler} checked={adoptionInformation.years === "true"}></input>
-                                <label htmlFor="years_true" style={{marginRight:"10px"}}>Años</label>
-                                
-                                <input type="radio" id="years_false" name="years" value="false" onChange={AdoptionInformationChangeHandler} checked={adoptionInformation.years === "false"}></input>
-                                <label htmlFor="years_false">Meses</label> 
+                        <div className="NewAdoptionWindow_Form__AgeSection">
+                            <input type="number" id="age" name="age" placeholder="Edad de la mascota" className="NewAdoptionWindow__InputBox NewAdoptionWindow__AgeBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.age}></input>
+                            <div>
+                                    <input type="radio" id="years_true" name="years" value="true"  onChange={AdoptionInformationChangeHandler} checked={adoptionInformation.years === "true"}></input>
+                                    <label htmlFor="years_true" style={{marginRight:"10px"}}>Años</label>
+                                    
+                                    <input type="radio" id="years_false" name="years" value="false" onChange={AdoptionInformationChangeHandler} checked={adoptionInformation.years === "false"}></input>
+                                    <label htmlFor="years_false">Meses</label> 
+                            </div>
                         </div>
-                        <input type="number" id="age" name="age" placeholder="Edad de la mascota" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.age}></input>
 
                         <label htmlFor="sex">Sexo</label>
                         <select id="sex" name="sex" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.sex}>
@@ -139,6 +147,9 @@ const NewAdoptionWindow = (props) => {
                         <label htmlFor="vaccines">Vacunas</label>
                         <input id="vaccines" name="vaccines" placeholder="Vacunas de la mascota" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.vaccines}></input>
                         
+                        <label htmlFor="phone">Numero de telefono</label>
+                        <input type="number" id="phone" name="phone" placeholder="Telefono al cual llamar" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.phone}></input>
+
                         <label htmlFor="description"></label>
                         <textarea
                             id="description"

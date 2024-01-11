@@ -22,8 +22,8 @@ const Adopcion = (props) => {
             <div className="Adopcion_Image_Section">
                 <img src={adoptionImage} alt="Perro" className="Adopcion_Image_Section_Image"></img>
             </div>
-            <div>
-                <p>Nombre: {adoptionName}</p>
+            <div style={{height:"70px"}}>
+                <p style={{fontWeight:"600"}}>Nombre: {adoptionName}</p>
                 <p>Sexo: {adoptionSex === "female"? "Femenino" : "Masculino" }</p>
                 <p>Edad: {adoptionAge.age} {adoptionAge.years === true? "Años" : "Meses"}</p>
             </div>

@@ -27,11 +27,18 @@ const IndividualAdoption = () => {
         <div className="IndividualAdoption__Main">
             <div className="IndividualAdoption__Second">
                 <img src={adoptionFromAPI.image} className="IndividualAdoption__Image"></img>
-                <p>Nombre: {adoptionFromAPI.name}</p>
-                <p>Genero: {adoptionFromAPI.sex === "male" ? "Macho" : "Hembra"}</p>
-                <p>Edad: {adoptionFromAPI.age} {adoptionFromAPI.year === true ? "Años" : "Meses"}</p>
-                <p>Informacion extra: {adoptionFromAPI.text}</p>
-                <p>Vacunas: {adoptionFromAPI.vaccines}</p>
+                <p style={{fontSize:"50px"}}>Nombre: {adoptionFromAPI.name}</p>
+                <div className="IndividualAdoption__Information">
+                    <div className="IndividualAdoption__InformationLeft">
+                        <p><a style={{fontWeight:"600"}}>Genero:</a> {adoptionFromAPI.sex === "male" ? "Macho" : "Hembra"}</p>
+                        <p><a style={{fontWeight:"600"}}>Edad:</a> {adoptionFromAPI.age} {adoptionFromAPI.year === true ? "Años" : "Meses"}</p>
+                        <p><a style={{fontWeight:"600"}}>Vacunas:</a> {adoptionFromAPI.vaccines}</p>
+                        <p><a style={{fontWeight:"600"}}>Telefono:</a> {adoptionFromAPI.phone}</p>
+                    </div>
+                    <div className="IndividualAdoption__InformationRight">
+                       <p><a style={{fontWeight:"600"}}>Informacion extra:</a> <br/> {adoptionFromAPI.text}</p>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -2,7 +2,7 @@
     margin: 10px;
     border-radius: 10px;
     width: 300px;
-    height: 400px;
+    height: 320px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -26,7 +26,9 @@
 .Adopcion_Date_Section{
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: var(--gray-2);
     width: 100%;
+    height: 30px;
     border-radius: 0px 0px 10px 10px;
 }
