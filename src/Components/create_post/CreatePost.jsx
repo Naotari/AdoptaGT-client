@@ -1,22 +1,22 @@
-import { useState } from "react";
 import "./CreatePost.css"
 import NewPost from "./NewPost";
+import { useSelector, useDispatch } from 'react-redux'
+import { NewPostWindowSwitch } from "../../redux/newPostSlice";
 
 
-const CreatePost = (props) => {
+const CreatePost = () => {
 
-    const [newPostShow, setNewPostShow] = useState(false)
-    
-    const idUser = props.idUser
+    const dispatch = useDispatch()
+
+    const NewPostWindowState = useSelector((state) => state.NewPost.NewPostWindowState)
     
     const createPostHandler = () => {
-        console.log(idUser);
-        setNewPostShow(true)
+        dispatch(NewPostWindowSwitch(true))
     }
     
     return (
         <div className="CreatePost_Main">
-            {newPostShow && <NewPost setNewPostShow={setNewPostShow} idUser={idUser}/>}
+            {NewPostWindowState && <NewPost/>}
             <button onClick={createPostHandler} className="CreatePost_Button">
                 <span className="material-symbols-outlined">
                     add_box

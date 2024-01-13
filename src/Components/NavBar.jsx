@@ -1,29 +1,31 @@
 import axios from "axios"
 import "./NavBar.css"
 import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from 'react-redux'
+import {obtainLoginInfo, loginState} from "../redux/loginInfoSlice"
 
 
 const NavBar = () => {
 
-    const [userData, setUserData] = useState("")
-    const [logged, setLogged] = useState(false)
+    const dispatch = useDispatch()
+
+    const userData = useSelector((state) => state.LoginInfo.loginData)
+    const logged = useSelector((state) => state.LoginInfo.logged)
+    
     let tokenObject = {token: window.localStorage.token}
 
     const tempFunction = async()=> { //Verification
-        // console.log(tokenObject);
         if (tokenObject.token === undefined) {
-            setLogged(false)
+            dispatch(loginState(false))
         } else {
-            // console.log("entra aqui");
             const response = await axios.post("users/verify", tokenObject)
             //here I need to create the redirect when the user was not found.
             const data = await axios.get(`users/${response.data.idUser}`)
-            setUserData(data.data)
-            setLogged(true)
-            // console.log(data.data);
+            dispatch(loginState(true))
+            dispatch(obtainLoginInfo(data.data))
         }
     };
-
+    
     useEffect(() => {
         tempFunction();
     }, [])

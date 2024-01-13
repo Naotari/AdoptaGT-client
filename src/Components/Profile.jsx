@@ -1,5 +1,4 @@
 import "./Profile.css"
-import authorizationProcess from "../Utilities/Authorization"
 import { useState, useEffect } from "react"
 import axios from "axios";
 import CreatePost from "./create_post/CreatePost";
@@ -7,30 +6,21 @@ import Posts from "./Posts";
 import Adopciones from "./Adopciones"
 import CreateAdoption from "./create_adoption/CreateAdoption";
 import ProfileInformation from "./Profileinformation";
+import { useSelector, useDispatch } from 'react-redux'
+import { changeUserImage } from "../redux/loginInfoSlice";
 
 
 const Profile = () => {
 
-    const [verified, setVerified] = useState("")
-    const [userData, setUserData] = useState("")
+    const userData = useSelector((state) => state.LoginInfo.loginData)
+    const dispatch = useDispatch()
+
     const [UserPanel, setUserPanel] = useState("")
     const [selectedInfo, setSelectedInfo] = useState("posts")
     const [specialButton, setSepecialButton] = useState("")
     const [uploadingUserImage, setUploadingUserImage] = useState(false)
     
     if (window.localStorage.token === undefined) { window.location.href = "./login" } //Redirect if no one is logged 
-    
-    const tempFunction = async()=> { //Verification and dataFetch
-        const tokenObject = {token: window.localStorage.token}
-        const response = await axios.post("users/verify", tokenObject)
-        //here I need to create the redirect when the user was not found.
-        setVerified(response.data)
-        const data = await axios.get(`users/${response.data.idUser}`)
-        setUserData(data.data)
-        // console.log(data.data);
-        if(data.data.role === "admin") {setSepecialButton(<button  className="Profile_first_Column__Button" style={{backgroundColor: "#68D4CE", borderRadius: "10px"}} onClick={displayAdminPanelHandler}>Perfil Administrativo</button>)}
-        else if(data.data.role === "moderator") {setSepecialButton(<button  className="Profile_first_Column__Button" onClick={displayModPanelHandler}>Perfil de Moderador</button>)}
-    };
 
     const userImageHandler = async(event) => {
         try {
@@ -41,7 +31,7 @@ const Profile = () => {
                 imageData.append("file", event.target.files[0]);
                 imageData.append("folder", "/AdoptaGT/user_image");
                 imageData.append("upload_preset", "adoptagt_user_image");
-                const cloudImageResponse = await axios.post("https://api.cloudinary.com/v1_1/dyiymsxec/upload/", imageData)
+                const cloudImageResponse = await axios.post("https://api.cloudinary.com/v1_1/dyiymsxec/upload/", imageData);
                 const cloudImageURL = cloudImageResponse.data.secure_url;
     
                 const urlData = {
@@ -49,11 +39,11 @@ const Profile = () => {
                     new_Image_url: cloudImageURL,
                     idUser: userData.id
                 }
-                const NewImageResponse = await axios.post("/users/user/image_update", urlData)
+                const NewImageResponse = await axios.post("/users/user/image_update", urlData);
 
-                const newUserData = {...userData, image: cloudImageURL}
-                setUserData(newUserData)
-                setUploadingUserImage(false)
+                dispatch(changeUserImage(cloudImageURL));
+
+                setUploadingUserImage(false);
             }
         } catch (error) {
             console.log(error);
@@ -71,38 +61,32 @@ const Profile = () => {
     }
     
     const userDetails = (
-            <ProfileInformation userInfo={userData}></ProfileInformation>
+            <ProfileInformation/>
     )
     const userPosts = (
         <div>
-            <CreatePost idUser={userData.id}/>
+            <CreatePost/>
             <Posts></Posts>
         </div>
     )
     const userAdoptions = (
         <div>
-            <CreateAdoption idUser={userData.id}></CreateAdoption>
+            <CreateAdoption/>
             <Adopciones></Adopciones>
         </div>
     )
 
     useEffect(() => {
-        tempFunction();
-    }, [])
+        if(userData.role === "admin") {setSepecialButton(<button  className="Profile_first_Column__Button" style={{backgroundColor: "#68D4CE", borderRadius: "10px"}} onClick={displayAdminPanelHandler}>Perfil Administrativo</button>)}
+        else if(userData.role === "moderator") {setSepecialButton(<button  className="Profile_first_Column__Button" onClick={displayModPanelHandler}>Perfil de Moderador</button>)}
+    }, [userData])
     
     useEffect(() => {
         if(selectedInfo === "posts") setUserPanel(userPosts)
         else if (selectedInfo === "details") setUserPanel(userDetails)
         else if (selectedInfo === "adoptions") setUserPanel(userAdoptions)
         
-    }, [userData, selectedInfo])
-    
-    // if (window.localStorage.token) {
-    //     const idUser = verified.idUser
-    //     // console.log(userData);
-    // } else {
-    //     window.location.href = "./login";
-    // }
+    }, [selectedInfo])
 
     return (
         <div className="Profile_Main">
@@ -119,7 +103,6 @@ const Profile = () => {
                 <button className="Profile_first_Column__Button" onClick={displayUserAdoptionsHandler}>Mis Adopciones</button>
                 <button className="Profile_first_Column__Button" onClick={displayUserDetailsHandler}>Informacion</button>
                 {specialButton}
-                {/* <button onClick={displayAdminPanelHandler}>Perfil Administrativo</button> */}
                 <button className="Profile_first_Column__Button" onClick={closeSesionHandler}>Cerrar Sesion</button>
             </div>
                 {UserPanel}

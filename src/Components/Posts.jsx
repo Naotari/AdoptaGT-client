@@ -17,12 +17,12 @@ const Posts = () => {
         }
     }
     const formatPosts = () => {
-        console.log(postsFromAPI);
+        // console.log(postsFromAPI);
         let postsMapped = []
         postsFromAPI.forEach(post => postsMapped.push(
             <Post info={post} key={post.id}></Post>
         ))
-        console.log(postsMapped);
+        // console.log(postsMapped);
         setPostsFormated(postsMapped);
     }
 
@@ -34,7 +34,7 @@ const Posts = () => {
     useEffect(() => {
         
         if(postsFromAPI.length > 0) {
-            console.log("Entra despues");
+            // console.log("Entra despues");
             formatPosts()
         }
     }, [postsFromAPI]);

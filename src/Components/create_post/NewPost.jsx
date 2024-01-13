@@ -1,10 +1,14 @@
 import "./NewPost.css"
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import axios from "axios";
+import { NewPostWindowSwitch } from "../../redux/newPostSlice";
 
-const NewPost = (props) => {
+const NewPost = () => {
 
-    console.log(props);
+    const dispatch = useDispatch()
+    const idUser = useSelector((state) => state.LoginInfo.loginData.id)
+
     const [descriptionText, setDescriptionText] = useState("")
     const [imageCloud, setImageCloud] = useState("")
     const [posting, setPosting] = useState(false)
@@ -14,7 +18,7 @@ const NewPost = (props) => {
         setDescriptionText(e.target.value)
     }
     const closeNewPostHandler = () => {
-        props.setNewPostShow(false)
+        dispatch(NewPostWindowSwitch(false))
     }
     const imageCloudChangeHandler = (event) => {
         console.log(URL.createObjectURL(event.target.files[0]));
@@ -43,7 +47,7 @@ const NewPost = (props) => {
                 cloudImageURL = cloudImageResponse.data.secure_url;
             }
             const postCreation = {
-                user_id: props.idUser,
+                user_id: idUser,
                 image: cloudImageURL,
                 text: descriptionText,
             }
@@ -51,7 +55,7 @@ const NewPost = (props) => {
             console.log(responseAPI);
     
             setPosting(false)
-            props.setNewPostShow(false)
+            dispatch(NewPostWindowSwitch(false))
             
         } catch (error) {
             console.log(error);

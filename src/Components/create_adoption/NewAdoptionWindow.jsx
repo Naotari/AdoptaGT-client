@@ -1,9 +1,13 @@
 import "./NewAdoptionWindow.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import axios from "axios";
-import { useEffect } from "react";
+import { NewAdoptionWindowSwitch } from "../../redux/newAdoptionSlice";
 
-const NewAdoptionWindow = (props) => {
+const NewAdoptionWindow = () => {
+
+    const dispatch = useDispatch()
+    const idUser = useSelector((state) => state.LoginInfo.loginData.id)
 
     const [adoptionInformation, setAdoptionInformation] = useState({
         name: "",
@@ -43,7 +47,7 @@ const NewAdoptionWindow = (props) => {
         }
     }
     const closeNewAdoptionHandler = () => {
-        props.setNewAdoptionShow(false)
+        dispatch(NewAdoptionWindowSwitch(false))
     }
     const imageCloudChangeHandler = (event) => {
         // console.log(URL.createObjectURL(event.target.files[0]));
@@ -71,7 +75,7 @@ const NewAdoptionWindow = (props) => {
                 cloudImageURL = cloudImageResponse.data.secure_url;
             }
             const adoptionCreation = {
-                user_id: props.idUser,
+                user_id: idUser,
                 image: cloudImageURL,
                 sex: adoptionInformation.sex,
                 name: adoptionInformation.name,
@@ -85,7 +89,7 @@ const NewAdoptionWindow = (props) => {
             console.log(responseAPI);
     
             setPosting(false)
-            props.setNewAdoptionShow(false)
+            dispatch(NewAdoptionWindowSwitch(false))
             
         } catch (error) {
             console.log(error);

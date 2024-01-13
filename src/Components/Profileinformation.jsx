@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./ProfileInformation.css"
 import axios from "axios";
 import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux'
 
-const ProfileInformation = (props) => {
-    const userInfo = props.userInfo 
-    // console.log(userInfo);
+const ProfileInformation = () => {
+    const userInfo = useSelector((state) => state.LoginInfo.loginData)
 
     const [userNameEdit, setUserNameEdit] = useState(true)
     const [userNameUsed, setUserNameUsed] = useState(false)
@@ -89,7 +89,6 @@ const ProfileInformation = (props) => {
         if(nameEdit === true) {
             setNameEdit(false)
         } else {
-            console.log(userInfo.id);
             const InfoToBeSent = {idUser: userInfo.id}
             if(nameText !== "") {InfoToBeSent.name = nameText}
             if(lastNameText !== "") {InfoToBeSent.last_name = lastNameText}
