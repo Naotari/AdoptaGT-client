@@ -7,8 +7,15 @@
 
 .Post_Main_User_Section{
     display: flex;
-    flex-direction: row;
     margin: 15px;
+}.Post_Main_User_Section button:last-child{
+    margin-left: auto;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    border: 0;
+    background-color: var(--brigth-gray);
+    cursor: pointer;
 }
 
 .Post_Main_Image {

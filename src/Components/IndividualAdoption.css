@@ -4,6 +4,7 @@
     align-items: center;
 }
 .IndividualAdoption__Second {
+    position: relative;
     border-radius: 10px;
     margin: 10px;
     width: 700px;
@@ -12,6 +13,43 @@
     flex-direction: column;
     align-items: center;
 }
+
+.IndividualAdoption__AdoptedMessage {
+    position: absolute;
+    left: 0;
+    margin: 15px;
+    padding: 10px;
+    background-color: var(--soft-color);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    display: flex;
+}
+
+.IndividualAdoption__ButtonBox {
+    position: absolute;
+    right: 0;
+    margin: 15px;
+}
+.IndividualAdoption__ButtonBox button:last-child {
+    border-radius: 0 10px 10px 0;
+    background-color: rgb(255, 75, 75);
+}
+.IndividualAdoption__Button {
+    border: 0;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    background-color: var(--soft-color);
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+}.IndividualAdoption__Button:hover {
+    filter: brightness(0.8);
+}.IndividualAdoption__Button:active {
+    padding: 9px;
+    margin: 0 1px 0 1px;
+}
+
 .IndividualAdoption__Image {
     margin-top: 10px;
     max-height: 625px;
