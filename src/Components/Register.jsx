@@ -41,7 +41,7 @@ const Register = () => {
                 const imageData = new FormData();
                 imageData.append("file", imageCloud); //element file is the image that was selected
                 imageData.append("folder", "/AdoptaGT/user_image"); //element folder is the path from cloudanity wher the image will be saved
-                imageData.append("upload_preset", "adoptagt_user_image"); // upload preset from cloudinary
+                imageData.append("upload_preset", import.meta.env.VITE_UPLOAD_PRESET_USER); // upload preset from cloudinary
                 const cloudImageResponse = await axios.post("https://api.cloudinary.com/v1_1/dyiymsxec/upload/", imageData)
                 // console.log(cloudImageResponse);
                 cloudImageURL = cloudImageResponse.data.secure_url;

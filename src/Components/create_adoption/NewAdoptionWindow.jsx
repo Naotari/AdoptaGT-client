@@ -27,22 +27,22 @@ const NewAdoptionWindow = () => {
         if (e.target.id === "name") {
             setAdoptionInformation({ ...adoptionInformation, name: e.target.value })
         } else if (e.target.name === "years") {
-            console.log(e.target.value);
+            // console.log(e.target.value);
             setAdoptionInformation({ ...adoptionInformation, years: e.target.value })
         } else if (e.target.id === "age") {
-            console.log(e.target.value);
+            // console.log(e.target.value);
             setAdoptionInformation({ ...adoptionInformation, age: e.target.value })
         } else if (e.target.id === "sex") {
-            console.log(e.target.value);
+            // console.log(e.target.value);
             setAdoptionInformation({ ...adoptionInformation, sex: e.target.value })
         } else if (e.target.id === "vaccines") {
-            console.log(e.target.value);
+            // console.log(e.target.value);
             setAdoptionInformation({ ...adoptionInformation, vaccines: e.target.value })
         } else if (e.target.id === "description") {
-            console.log(e.target.value);
+            // console.log(e.target.value);
             setAdoptionInformation({ ...adoptionInformation, text: e.target.value })
         } else if (e.target.id === "phone") {
-            console.log(e.target.value);
+            // console.log(e.target.value);
             setAdoptionInformation({ ...adoptionInformation, phone: e.target.value })
         }
     }
@@ -65,11 +65,11 @@ const NewAdoptionWindow = () => {
             setPosting(true)
             let cloudImageURL = ""
 
-            if (imageCloud) { //Process to upload the image in cloudinary
+            if (imageCloud) { //Process to upload the image to cloudinary
                 const imageData = new FormData();
                 imageData.append("file", imageCloud); //element file is the image that was selected
                 imageData.append("folder", "/AdoptaGT/adoption_image"); //element folder is the path from cloudanity wher the image will be saved
-                imageData.append("upload_preset", "adoptagt_adoption_image"); // upload preset from cloudinary
+                imageData.append("upload_preset", import.meta.env.VITE_UPLOAD_PRESET_ADOPTION); // upload preset from cloudinary
                 const cloudImageResponse = await axios.post("https://api.cloudinary.com/v1_1/dyiymsxec/upload/", imageData)
                 console.log(cloudImageResponse);
                 cloudImageURL = cloudImageResponse.data.secure_url;
@@ -97,14 +97,15 @@ const NewAdoptionWindow = () => {
     }
  
     useEffect(() => { //Verify the information of the inputs to enable the post button
-       if (adoptionInformation.name === "") setsubmitButtonState(true)
-       else if (adoptionInformation.age === "0") setsubmitButtonState(true)
-       else if (adoptionInformation.sex === "default") setsubmitButtonState(true)
-       else if (adoptionInformation.vaccines === "") setsubmitButtonState(true)
-       else if (adoptionInformation.text === "") setsubmitButtonState(true)
-       else if (imageCloud === "") setsubmitButtonState(true)
-       else if (adoptionInformation.phone <= 9999999 || adoptionInformation.phone > 99999999) setsubmitButtonState(true)
-       else setsubmitButtonState(false)
+        if (adoptionInformation.name === "" ||
+            adoptionInformation.age === "0" ||
+            adoptionInformation.sex === "default" ||
+            adoptionInformation.vaccines === "" ||
+            adoptionInformation.text === "" ||
+            imageCloud === "" ||
+            !(adoptionInformation.phone.toString().length === 8)
+        ) setsubmitButtonState(true)
+        else setsubmitButtonState(false)
     }, [adoptionInformation, imageCloud])
 
     return (

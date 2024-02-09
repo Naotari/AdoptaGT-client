@@ -30,7 +30,7 @@ const Profile = () => {
                 const imageData = new FormData();
                 imageData.append("file", event.target.files[0]);
                 imageData.append("folder", "/AdoptaGT/user_image");
-                imageData.append("upload_preset", "adoptagt_user_image");
+                imageData.append("upload_preset", import.meta.env.VITE_UPLOAD_PRESET_USER);
                 const cloudImageResponse = await axios.post("https://api.cloudinary.com/v1_1/dyiymsxec/upload/", imageData);
                 const cloudImageURL = cloudImageResponse.data.secure_url;
     
