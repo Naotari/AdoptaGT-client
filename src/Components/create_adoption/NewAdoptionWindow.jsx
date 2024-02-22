@@ -15,6 +15,7 @@ const NewAdoptionWindow = () => {
         age: "0",
         sex: "default",
         vaccines: "",
+        pet_type: "",
         text: "",
         phone: 0,
     })
@@ -38,6 +39,9 @@ const NewAdoptionWindow = () => {
         } else if (e.target.id === "vaccines") {
             // console.log(e.target.value);
             setAdoptionInformation({ ...adoptionInformation, vaccines: e.target.value })
+        } else if (e.target.id === "pet_type") {
+            console.log(e.target.value);
+            setAdoptionInformation({ ...adoptionInformation, pet_type: e.target.value })
         } else if (e.target.id === "description") {
             // console.log(e.target.value);
             setAdoptionInformation({ ...adoptionInformation, text: e.target.value })
@@ -83,6 +87,7 @@ const NewAdoptionWindow = () => {
                 years: adoptionInformation.years,
                 text: adoptionInformation.text,
                 vaccines: adoptionInformation.vaccines,
+                pet_type: adoptionInformation.pet_type,
                 phone: adoptionInformation.phone,
             }
             const responseAPI = await axios.post("/adoptions", adoptionCreation)
@@ -101,6 +106,7 @@ const NewAdoptionWindow = () => {
             adoptionInformation.age === "0" ||
             adoptionInformation.sex === "default" ||
             adoptionInformation.vaccines === "" ||
+            adoptionInformation.pet_type === "" ||
             adoptionInformation.text === "" ||
             imageCloud === "" ||
             !(adoptionInformation.phone.toString().length === 8)
@@ -130,6 +136,18 @@ const NewAdoptionWindow = () => {
                         <label htmlFor="name">Nombre</label>
                         <input id="name" name="name" placeholder="Nombre de la mascota" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.name}></input>
 
+                        <label htmlFor="pet_type">Especie</label>
+                        <select id="pet_type" name="pet_type" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.pet_type} className="NewAdoptionWindow__InputBox">
+                            <option value="default" disabled>Especie de la mascota</option>
+                            <option value="dog">Perro</option>
+                            <option value="cat">Gato</option>
+                            <option value="rabbit">Conejo</option>
+                            <option value="hamster">Hamster</option>
+                            <option value="bird">Ave</option>
+                            <option value="fish">Pez</option>
+                            <option value="other">otros</option>
+                        </select>
+
                         <label htmlFor="age">Edad</label>
                         <div className="NewAdoptionWindow_Form__AgeSection">
                             <input type="number" id="age" name="age" placeholder="Edad de la mascota" className="NewAdoptionWindow__InputBox NewAdoptionWindow__AgeBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.age}></input>
@@ -143,7 +161,7 @@ const NewAdoptionWindow = () => {
                         </div>
 
                         <label htmlFor="sex">Sexo</label>
-                        <select id="sex" name="sex" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.sex}>
+                        <select id="sex" name="sex" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.sex} className="NewAdoptionWindow__InputBox">
                             <option value="default" disabled>Genero de la mascota</option>
                             <option value="male">Macho</option>
                             <option value="female">Hembra</option>

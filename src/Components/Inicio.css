@@ -1,0 +1,29 @@
+.Inicio_Main {
+    background-color: rgb(150, 150, 150);
+    color: var(--soft-white);
+    margin: 15px;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+
+}
+.Inicio_Left {
+    padding-right: 10px;
+    width: 50%;
+}
+.Inico_Right {
+    width: 50%;
+    padding-left: 10px;
+}
+
+.Inicio_Tittle {
+    margin: 0;
+}
+.Inicio_Links {
+    font-size: 40px;
+    text-decoration: none;
+    color: var(--soft-white);
+    background-color: var(--soft-color);
+    border-radius: 15px;
+    padding: 5px;
+}

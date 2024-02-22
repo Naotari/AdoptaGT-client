@@ -1,0 +1,19 @@
+.Not_Found_Main {
+    display: flex;
+    margin-top: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+.Not_Found_Main_Image {
+    height: 200px;
+    border-radius: 15px;
+}
+.Not_Found_Main_Button {
+    margin-top: 20px;
+    background-color: var(--main-color) ;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 20px;
+    color: var(--soft-white);
+    text-decoration: none;
+}

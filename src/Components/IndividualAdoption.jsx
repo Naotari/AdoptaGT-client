@@ -111,6 +111,7 @@ const IndividualAdoption = () => {
                 <p style={{fontSize:"50px"}}>Nombre: {adoptionFromAPI.name}</p>
                 <div className="IndividualAdoption__Information">
                     <div className="IndividualAdoption__InformationLeft">
+                        <p><a style={{fontWeight:"600"}}>Especie:</a> {adoptionFromAPI.pet_type === "dog" ? "Perro" : adoptionFromAPI.pet_type === "cat" ? "Gato" : adoptionFromAPI.pet_type === "rabbit" ? "Conejo" : adoptionFromAPI.pet_type === "hamster" ? "Hamster" : adoptionFromAPI.pet_type === "bird" ? "Pajaro" : adoptionFromAPI.pet_type === "fish" ? "Pez" : "Otros"}</p>
                         <p><a style={{fontWeight:"600"}}>Genero:</a> {adoptionFromAPI.sex === "male" ? "Macho" : "Hembra"}</p>
                         <p><a style={{fontWeight:"600"}}>Edad:</a> {adoptionFromAPI.age} {adoptionFromAPI.year === true ? "Años" : "Meses"}</p>
                         <p><a style={{fontWeight:"600"}}>Vacunas:</a> {adoptionFromAPI.vaccines}</p>
