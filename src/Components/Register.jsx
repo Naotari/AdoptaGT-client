@@ -16,7 +16,7 @@ const Register = () => {
     const [userNameTakken, setUserNameTakken] = useState(false)
     const [userEmailTakken, setUserEmailTakken] = useState(false)
     const [strongPassword, setStrongPassword] = useState(false)
-    const [URL, setURL] = useState(false)
+    const [imageCloudURL, setImageCloudURL] = useState(false)
 
     const userNameChangeHandler = (e) => {setUserName(e.target.value)};
     const nameChangeHandler = (e) => {setName(e.target.value)};
@@ -45,7 +45,7 @@ const Register = () => {
                 const cloudImageResponse = await axios.post("https://api.cloudinary.com/v1_1/dyiymsxec/upload/", imageData)
                 // console.log(cloudImageResponse);
                 cloudImageURL = cloudImageResponse.data.secure_url;
-                setURL(cloudImageURL)
+                setImageCloudURL(cloudImageURL)
             }
 
             const newUser = {
@@ -63,7 +63,7 @@ const Register = () => {
             window.location.href = "./login"
     
         } catch (error) {
-            axios.delete("/users/user/iamge", {imageURL : URL})
+            axios.delete("/users/user/iamge", {imageURL : imageCloudURL})
             .then(response => console.log("deletion image ==>" , response , "this is the error ==>" , error))
         }
 
