@@ -11,7 +11,7 @@ const Posts = () => {
     const getPostsfromAPI = async() => {
         try {
             const response = await axios.get("/posts")
-            setPostsFromAPI(response.data)
+            setPostsFromAPI(response.data.content)
         } catch (error) {
             console.log(error);
         }

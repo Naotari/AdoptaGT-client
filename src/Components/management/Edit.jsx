@@ -10,7 +10,7 @@ const Edit = (props) => {
 
     const getUserData = async () => {
         const response = await axios.get(`users/${props.userId}`)
-        setUserData(response.data)
+        setUserData(response.data.content)
     }
 
     const userNameChangeHandler = (event) => {

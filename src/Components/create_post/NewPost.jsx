@@ -56,7 +56,7 @@ const NewPost = () => {
     
             setPosting(false)
             dispatch(NewPostWindowSwitch(false))
-            
+            location.reload();
         } catch (error) {
             console.log(error);
         }

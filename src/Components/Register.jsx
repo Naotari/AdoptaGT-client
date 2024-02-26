@@ -63,7 +63,7 @@ const Register = () => {
             window.location.href = "./login"
     
         } catch (error) {
-            axios.delete("/users/user/iamge", {imageURL : imageCloudURL})
+            axios.delete("/users/user/image", {imageURL : imageCloudURL})
             .then(response => console.log("deletion image ==>" , response , "this is the error ==>" , error))
         }
 
@@ -82,12 +82,17 @@ const Register = () => {
     useEffect(() => { //Check the user name availability
         const request = async () => {
             if (userName !== "") {
-                const response = await axios.post("/users/verify/user_name", {user_name: userName})
-                if (response.data.message === "There is already a user with that user_name") {
-                    setUserNameTakken(true);
-                    setsubmitButtonState(true);
+                try {
+
+                    const verifyUserNameResponse = await axios.post("/users/verify/user_name", {user_name: userName});
+                    if(verifyUserNameResponse.data.state === "ok") setUserNameTakken(false);
+
+                } catch (error) {
+                    if (error.response.data.state === "error") {
+                        setUserNameTakken(true);
+                        setsubmitButtonState(true);
+                    }
                 }
-                else setUserNameTakken(false)
             }
         }
         request()
@@ -95,12 +100,18 @@ const Register = () => {
     useEffect(() => { //check the email availavility
         const request = async () => {
             if (email !== "") {
-                const response = await axios.post("/users/verify/email", {email})
-                if (response.data.message === "There is already a user with that email") {
-                    setUserEmailTakken(true);
-                    setsubmitButtonState(true);
+                try {
+
+                    const verifyEmailResponse = await axios.post("/users/verify/email", {email})
+                    if(verifyEmailResponse.data.state === "ok") setUserEmailTakken(false);
+
+                } catch (error) {
+
+                    if (error.response.data.state === "error") {
+                        setUserEmailTakken(true);
+                        setsubmitButtonState(true);
+                    }
                 }
-                else setUserEmailTakken(false)
             }
         }
         request()

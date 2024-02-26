@@ -14,7 +14,7 @@ const Users = () => {
 
     const allUsersDataFetch = async () => { //Getting all data
         const response = await axios.get("users/")
-            setAllUsersData(response.data)
+            setAllUsersData(response.data.content)
     }
 
     const deleteUser = async (id) => {

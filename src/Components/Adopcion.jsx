@@ -2,8 +2,6 @@ import "./Adopcion.css"
 
 const Adopcion = (props) => {
 
-    console.log(props.info);
-
     const adoptionImage = props.info.image
     const adoptionName = props.info.name
     const adoptionSex = props.info.sex
@@ -19,6 +17,7 @@ const Adopcion = (props) => {
 
     return (
         <a href={`/adoption/${props.info.id}`} className="Adopcion_Main">
+            {(props.info.adopted === true) && <p className="Asoption_Adopted_Message">Adoptado<span className="material-symbols-outlined" style={{paddingTop:"2px"}}>favorite</span></p>}
             <div className="Adopcion_Image_Section">
                 <img src={adoptionImage} alt="Perro" className="Adopcion_Image_Section_Image"></img>
             </div>

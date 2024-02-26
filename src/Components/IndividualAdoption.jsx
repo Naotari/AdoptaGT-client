@@ -16,9 +16,10 @@ const IndividualAdoption = () => {
     const getAdoptionfromAPI = async () => {
         try {
             const response = await axios.get(`adoptions/${id}`)
-            setAdoptionFromAPI(response.data)
+            setAdoptionFromAPI(response.data.content)
         } catch (error) {
             console.log(error);
+            if(error.response.data.state === "error") {window.location.href = "../notfound"}
         }
     }
 
@@ -78,15 +79,11 @@ const IndividualAdoption = () => {
         })
     }
 
-
-    
     useEffect(() => {
         getAdoptionfromAPI();
     }, []);
 
     useEffect(() => {
-        console.log(adoptionFromAPI.user_id);
-        console.log(idLogged);
         if ( (idLogged === adoptionFromAPI.user_id) && (typeof adoptionFromAPI.user_id === "number")) setAdoptionOptions(true);
     }, [idLogged, adoptionFromAPI])
 
@@ -95,7 +92,7 @@ const IndividualAdoption = () => {
             <div className="IndividualAdoption__Second">
                 {adoptionFromAPI.adopted && 
                     <div className="IndividualAdoption__AdoptedMessage">
-                        <p>Ya fue adoptado </p><span class="material-symbols-outlined" style={{paddingTop:"2px"}}>favorite</span>
+                        <p>Ya fue adoptado </p><span className="material-symbols-outlined" style={{paddingTop:"2px"}}>favorite</span>
                     </div>
                 }
                 {AdoptionOptions &&

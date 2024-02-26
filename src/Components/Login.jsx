@@ -20,33 +20,34 @@ const Login = () => {
                 email,
                 password
             }
-            const response = await axios.post("users/login", loginUser)
-            if (response.data.status === "ok") {
+            const loginUserResponse = await axios.post("users/login", loginUser)
+            if (loginUserResponse.data.state === "ok") {
                 Swal.fire({
                     text: "Accediendo",
                 });
-                window.localStorage.setItem("token", response.data.accessToken);
+                window.localStorage.setItem("token", loginUserResponse.data.content.accessToken);
                 window.location.href = "./inicio";
             }
             else {
-                const responseDB = response.data.error
-                if (responseDB === "User not found") {
-                    Swal.fire({
-                        text: "No se encontro el usuario",
-                        icon: "error",
-                        timer: 5000,
-                    });
-                }
-                else if (responseDB === "Incorrect password") {
-                    Swal.fire({
-                        text: "Contraseña incorrecta",
-                        icon: "error",
-                        timer: 5000,
-                    });
-                }
+                const responseDB = loginUserResponse.data.content
+
             }
         } catch (error) {
             console.log(error);
+            if (error.response.data.content === "User not found") {
+                Swal.fire({
+                    text: "No se encontro el usuario",
+                    icon: "error",
+                    timer: 5000,
+                });
+            }
+            else if (error.response.data.content === "Incorrect password") {
+                Swal.fire({
+                    text: "Contraseña incorrecta",
+                    icon: "error",
+                    timer: 5000,
+                });
+            }
         }
     }
 

@@ -95,7 +95,7 @@ const NewAdoptionWindow = () => {
     
             setPosting(false)
             dispatch(NewAdoptionWindowSwitch(false))
-            
+            location.reload();
         } catch (error) {
             console.log(error);
         }

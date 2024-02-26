@@ -10,13 +10,13 @@ const Inicio = () => {
     axios.get(`adoptions/counts/adoptions`)
     .then(response => {
         if(response.data.state === "ok") {
-            setAdoptionsCount(response.data.message)
+            setAdoptionsCount(response.data.content)
         } else {setAdoptionsCount("error")}
     })
     axios.get(`adoptions/counts/adopted`)
     .then(response => {
         if(response.data.state === "ok") {
-            setPetsCount(response.data.message)
+            setPetsCount(response.data.content)
         } else {setPetsCount("error")}
     })
 

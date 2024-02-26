@@ -11,7 +11,7 @@ const Adopciones = () => {
     const getAdoptionsfromAPI = async() => {
         try {
             const response = await axios.get("/adoptions")
-            setAdoptionsFromAPI(response.data)
+            setAdoptionsFromAPI(response.data.content)
         } catch (error) {
             console.log(error);
         }

@@ -43,6 +43,7 @@ const Post = (props) => {
                         text: "Tu publicacion ha sido eliminada.",
                         icon: "success"
                     })
+                    location.reload();
                 })
                 .catch((error) => {
                     if (error.response.data.state === "error") {
