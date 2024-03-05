@@ -23,7 +23,8 @@ const Login = () => {
             const loginUserResponse = await axios.post("users/login", loginUser)
             if (loginUserResponse.data.state === "ok") {
                 Swal.fire({
-                    text: "Accediendo",
+                    title: "Accediendo...",
+                    showConfirmButton: false,
                 });
                 window.localStorage.setItem("token", loginUserResponse.data.content.accessToken);
                 window.location.href = "./inicio";
@@ -62,10 +63,10 @@ const Login = () => {
             <form onSubmit={handleSubmit} className="Login__Form">
                 <p className="Login__Tittle">Iniciar sesión</p>
                 <label htmlFor="email">Correo Electrónico:</label>
-                <input className="Login__InputBox" value={email} onChange={emailChangeHandler} type="email" placeholder="Tu Correo Electrónico" id="email" name="email"></input>
+                <input className="Login__InputBox" value={email} onChange={emailChangeHandler} type="email" placeholder="Tu Correo Electrónico" id="email" name="email" maxlength="64"></input>
 
                 <label htmlFor="password">Password</label>
-                <input className="Login__InputBox" value={password} onChange={passwordChangeHandler} type="password" placeholder="****" id="password" name="password"></input>
+                <input className="Login__InputBox" value={password} onChange={passwordChangeHandler} type="password" placeholder="****" id="password" name="password" maxlength="32"></input>
 
                 <button className="login__UploadButton" type="submit" disabled={LoginButtonState}>Iniciar sesión</button>
             </form>

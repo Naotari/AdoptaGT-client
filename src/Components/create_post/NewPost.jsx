@@ -87,7 +87,8 @@ const NewPost = () => {
                         value={descriptionText}
                         onChange={descriptionChangeHandler}
                         placeholder="Descripcion"
-                        className="NewPostWindow--description__Box">
+                        className="NewPostWindow--description__Box"
+                        maxLength="512">
                     </textarea>
 
                     {imageCloud &&

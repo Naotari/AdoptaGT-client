@@ -149,10 +149,10 @@ const Register = () => {
                         <input className="Register__InputBox" maxLength="32" value={lastName} onChange={lastNameChangeHandler} type="text" placeholder="Tu apellido" id="lastName" name="lastName"></input>
 
                         <label htmlFor="email">Correo Electrónico: {userEmailTakken && <a style={{margin: 10, fontSize:"11px", color:"red"}}>Ya existe el Correo.</a>}</label>
-                        <input className="Register__InputBox" value={email} onChange={emailChangeHandler} type="email" placeholder="Tu Correo Electrónico" id="email" name="email" style={userEmailTakken ? { color: "red" } : {}}></input>
+                        <input className="Register__InputBox" maxLength="64" value={email} onChange={emailChangeHandler} type="email" placeholder="Tu Correo Electrónico" id="email" name="email" style={userEmailTakken ? { color: "red" } : {}}></input>
 
                         <label htmlFor="password">Contraseña: {strongPassword && <a style={{margin: 0, fontSize:"11px", color:"red"}}>Ingresa una combinacion de al menos 8 Mayusculas, Minusculas, Numeros y Caracteres especiales (@#$%^&+=!)</a>}</label>
-                        <input className="Register__InputBox" value={password} onChange={passwordChangeHandler} type="text" placeholder="****" id="password" name="password" style={strongPassword ? { color: "red" } : {}}></input>
+                        <input className="Register__InputBox" maxLength="32" value={password} onChange={passwordChangeHandler} type="text" placeholder="****" id="password" name="password" style={strongPassword ? { color: "red" } : {}}></input>
                     </div>
 
                     {imageCloud &&

@@ -15,7 +15,7 @@ const NewAdoptionWindow = () => {
         age: "0",
         sex: "default",
         vaccines: "",
-        pet_type: "",
+        pet_type: "default",
         text: "",
         phone: 0,
     })
@@ -106,7 +106,7 @@ const NewAdoptionWindow = () => {
             adoptionInformation.age === "0" ||
             adoptionInformation.sex === "default" ||
             adoptionInformation.vaccines === "" ||
-            adoptionInformation.pet_type === "" ||
+            adoptionInformation.pet_type === "default" ||
             adoptionInformation.text === "" ||
             imageCloud === "" ||
             !(adoptionInformation.phone.toString().length === 8)
@@ -134,7 +134,7 @@ const NewAdoptionWindow = () => {
                 <div className="NewAdoptionWindow_Form__SubBox">
                     <div className="NewAdoptionWindow_Form__LeftBox">
                         <label htmlFor="name">Nombre</label>
-                        <input id="name" name="name" placeholder="Nombre de la mascota" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.name}></input>
+                        <input id="name" name="name" placeholder="Nombre de la mascota" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.name} maxlength="32"></input>
 
                         <label htmlFor="pet_type">Especie</label>
                         <select id="pet_type" name="pet_type" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.pet_type} className="NewAdoptionWindow__InputBox">
@@ -150,7 +150,7 @@ const NewAdoptionWindow = () => {
 
                         <label htmlFor="age">Edad</label>
                         <div className="NewAdoptionWindow_Form__AgeSection">
-                            <input type="number" id="age" name="age" placeholder="Edad de la mascota" className="NewAdoptionWindow__InputBox NewAdoptionWindow__AgeBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.age}></input>
+                            <input type="number" id="age" name="age" placeholder="Edad de la mascota" className="NewAdoptionWindow__InputBox NewAdoptionWindow__AgeBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.age} min="0" max="99"></input>
                             <div>
                                     <input type="radio" id="years_true" name="years" value="true"  onChange={AdoptionInformationChangeHandler} checked={adoptionInformation.years === "true"}></input>
                                     <label htmlFor="years_true" style={{marginRight:"10px"}}>Años</label>
@@ -168,7 +168,7 @@ const NewAdoptionWindow = () => {
                         </select>
 
                         <label htmlFor="vaccines">Vacunas</label>
-                        <input id="vaccines" name="vaccines" placeholder="Vacunas de la mascota" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.vaccines}></input>
+                        <input id="vaccines" name="vaccines" placeholder="Vacunas de la mascota" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.vaccines} maxlength="128"></input>
                         
                         <label htmlFor="phone">Numero de telefono</label>
                         <input type="number" id="phone" name="phone" placeholder="Telefono al cual llamar" className="NewAdoptionWindow__InputBox" onChange={AdoptionInformationChangeHandler} value={adoptionInformation.phone}></input>
@@ -180,7 +180,8 @@ const NewAdoptionWindow = () => {
                             value={adoptionInformation.text}
                             onChange={AdoptionInformationChangeHandler}
                             placeholder="Informacion extra (Caracter, alguna discapacidad o si tiene alguna comida favorita)"
-                            className="NewAdoptionWindow--description__Box">
+                            className="NewAdoptionWindow--description__Box"
+                            maxlength="512">
                         </textarea>
                     </div>
 

@@ -11,8 +11,14 @@ import Admin from "./Components/management/Admin"
 import Mod from "./Components/management/Mod"
 import NotFound from "./Components/NotFound"
 import Inicio from "./Components/Inicio"
+import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
 
 function App() {
+
+  inject(); //Vercel Web Analytics provides you detailed insights into your website's visitors.
+  injectSpeedInsights(); //Vercel Speed Insights provides you detailed insights into your website's performance. 
 
   return (
     <div className="App_Main">

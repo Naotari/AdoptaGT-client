@@ -9,13 +9,13 @@ const ProfileInformation = () => {
 
     const [userNameEdit, setUserNameEdit] = useState(false)
     const [userNameUsed, setUserNameUsed] = useState(false)
-    const [userNameText, setUserNameText] = useState("")
+    const [userNameText, setUserNameText] = useState(userInfo.user_name)
     const [nameEdit, setNameEdit] = useState(false)
-    const [nameText, setNameText] = useState("")
-    const [lastNameText, setLastNameText] = useState("")
+    const [nameText, setNameText] = useState(userInfo.name)
+    const [lastNameText, setLastNameText] = useState(userInfo.last_name)
     const [emailEdit, setEmailEdit] = useState(false)
     const [emailUsed, setEmailUsed] = useState(false)
-    const [emailText, setEmailText] = useState("")
+    const [emailText, setEmailText] = useState(userInfo.email)
     const [changingPassword, setChangingPassword] = useState(false)
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
@@ -26,7 +26,8 @@ const ProfileInformation = () => {
     
     const userNameChangeHandler = async (event) => {
         setUserNameText(event.target.value)
-        if (event.target.value !== "") {
+        if (event.target.value === "")  setUserNameUsed(true);
+        else {
             try {
                 const verifyUserNameResponse = await axios.post("/users/verify/user_name", {user_name: event.target.value})
                 if (verifyUserNameResponse.data.state === "ok") setUserNameUsed(false);
@@ -44,7 +45,8 @@ const ProfileInformation = () => {
     }
     const emailChangeHandler = async (event) => {
         setEmailText(event.target.value)
-        if (event.target.value !== "") {
+        if (event.target.value === "") setEmailUsed(true);
+        else {
             try {
                 const verifyEmailResponse = await axios.post("/users/verify/email", {email: event.target.value})
                 if (verifyEmailResponse.data.state === "ok") setEmailUsed(false);
@@ -75,7 +77,7 @@ const ProfileInformation = () => {
         }
     }
     const closeUserNameEdit = () => {
-        setUserNameText("")
+        setUserNameText(userInfo.user_name)
         setUserNameEdit(false)
         setUserNameUsed(false)
     }
@@ -93,8 +95,8 @@ const ProfileInformation = () => {
         }
     }
     const closeNameEdit = () => {
-        setNameText("")
-        setLastNameText("")
+        setNameText(userInfo.name)
+        setLastNameText(userInfo.last_name)
         setNameEdit(false)
     }
     const editEmailSubmit = async () => {
@@ -108,7 +110,7 @@ const ProfileInformation = () => {
         }
     }
     const closeEmailEdit = () => {
-        setEmailText("")
+        setEmailText(userInfo.email)
         setEmailEdit(false)
         setEmailUsed(false)
     }
@@ -205,7 +207,7 @@ const ProfileInformation = () => {
                 <div className="ProfileInformation__InfoSection">
                     <p className="profileInformation__InfoSection__Text">Correo:</p>
                     {emailEdit?
-                        <input className="ProfileInformation__InfoSection__Input" placeholder={userInfo.email} value={emailText} type="email" onChange={emailChangeHandler}></input>:
+                        <input className="ProfileInformation__InfoSection__Input" placeholder={userInfo.email} value={emailText} type="email" onChange={emailChangeHandler} maxLength="64"></input>:
                         <p className="profileInformation__InfoSection__Text">{userInfo.email}</p>
                     }
                     {emailUsed && <p style={{color:"red", fontSize:12}}>*Correo en uso</p>}
@@ -218,12 +220,12 @@ const ProfileInformation = () => {
                     {changingPassword?
                         <form className="ProfileInformation__LowerOptions__InputsBox">
                             <label>Contraseña actual</label>
-                            <input id="old_password" className="ProfileInformation__LowerOptions__Inputs" value={oldPassword} maxLength="64" onChange={passwordChangeHandler}></input>
+                            <input id="old_password" className="ProfileInformation__LowerOptions__Inputs" value={oldPassword} maxLength="32" onChange={passwordChangeHandler}></input>
                             <label>Contraseña nueva</label>
-                            <input id="new_password" className="ProfileInformation__LowerOptions__Inputs" value={newPassword} maxLength="64" onChange={passwordChangeHandler}></input>
+                            <input id="new_password" className="ProfileInformation__LowerOptions__Inputs" value={newPassword} maxLength="32" onChange={passwordChangeHandler}></input>
                             {newPasswordWarning ? <p className="ProfileInformation__InputsBox__Warning">*Ingresa una combinacion de al menos 8 Mayusculas, Minusculas, Numeros y Caracteres especiales (@#$%^&+=!)</p>: <br></br>}
                             <label>Repetir contraseña</label>
-                            <input id="repeat_password" className="ProfileInformation__LowerOptions__Inputs" value={repeatPassword} maxLength="64" onChange={passwordChangeHandler}></input>
+                            <input id="repeat_password" className="ProfileInformation__LowerOptions__Inputs" value={repeatPassword} maxLength="32" onChange={passwordChangeHandler}></input>
                             {repeatPasswordWarning ? <p className="ProfileInformation__InputsBox__Warning">*La nueva contraseña no coincide</p> : <br></br>}
                             <div>
                                 <button className="ProfileInformation__LowerOptions__Buttons" onClick={editPasswordSubmit} disabled={!changePasswordButtonState}>Cambiar</button>
