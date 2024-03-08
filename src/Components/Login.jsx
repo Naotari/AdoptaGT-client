@@ -49,6 +49,14 @@ const Login = () => {
                     timer: 5000,
                 });
             }
+            else if (error.response.data.content === "User was disabled") {
+                Swal.fire({
+                    title: "Usuario desabilitado",
+                    text: "Pongase en contacto con el administrador para resolverlo.",
+                    icon: "error",
+                    timer: 5000,
+                });
+            }
         }
     }
 
@@ -63,14 +71,15 @@ const Login = () => {
             <form onSubmit={handleSubmit} className="Login__Form">
                 <p className="Login__Tittle">Iniciar sesión</p>
                 <label htmlFor="email">Correo Electrónico:</label>
-                <input className="Login__InputBox" value={email} onChange={emailChangeHandler} type="email" placeholder="Tu Correo Electrónico" id="email" name="email" maxlength="64"></input>
+                <input className="Login__InputBox" value={email} onChange={emailChangeHandler} type="email" placeholder="Tu Correo Electrónico" id="email" name="email" maxLength="64"></input>
 
                 <label htmlFor="password">Password</label>
-                <input className="Login__InputBox" value={password} onChange={passwordChangeHandler} type="password" placeholder="****" id="password" name="password" maxlength="32"></input>
+                <input className="Login__InputBox" value={password} onChange={passwordChangeHandler} type="password" placeholder="****" id="password" name="password" maxLength="32"></input>
 
                 <button className="login__UploadButton" type="submit" disabled={LoginButtonState}>Iniciar sesión</button>
             </form>
             <a href="/register" style={{borderRadius:"20px"}}><button className="login__UploadButton">No tienes cuenta? Registrate aqui.</button></a>
+            <a href="/password_recovery" style={{borderRadius:"20px", marginTop:"10px"}}><button className="login__UploadButton">Olvidaste tu contraseña?</button></a>
         </div>
     )
 }

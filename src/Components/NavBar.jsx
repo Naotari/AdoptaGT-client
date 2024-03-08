@@ -15,14 +15,21 @@ const NavBar = () => {
     let tokenObject = {token: window.localStorage.token}
 
     const tempFunction = async()=> { //Verification
-        if (tokenObject.token === undefined) {
-            dispatch(loginState(false))
-        } else {
-            const response = await axios.post("users/verify", tokenObject)
-            //here I need to create the redirect when the user was not found.
-            const getUserResponse = await axios.get(`users/${response.data.content.idUser}`)
-            dispatch(loginState(true))
-            dispatch(obtainLoginInfo(getUserResponse.data.content))
+        try {
+            if (tokenObject.token === undefined) {
+                dispatch(loginState(false))
+            } else {
+                const response = await axios.post("users/verify", tokenObject)
+                const getUserResponse = await axios.get(`users/${response.data.content.idUser}`)
+                dispatch(loginState(true))
+                dispatch(obtainLoginInfo(getUserResponse.data.content))
+            }
+        } catch (error) {
+            console.log(error);
+            if (error.response.data.content === "User was disabled") {
+                window.localStorage.removeItem("token");
+                window.location.href = "./inicio"
+            }
         }
     };
     

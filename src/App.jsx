@@ -7,6 +7,8 @@ import IndividualAdoption from "./Components/IndividualAdoption"
 import Profile from "./Components/Profile"
 import Login from "./Components/Login"
 import Register from "./Components/Register"
+import RecoveryPasswordForm from "./Components/RecoveryPasswordForm"
+import RecoveryPasswordReset from "./Components/RecoveryPasswordReset"
 import Admin from "./Components/management/Admin"
 import Mod from "./Components/management/Mod"
 import NotFound from "./Components/NotFound"
@@ -47,6 +49,12 @@ function App() {
         </Route>
         <Route path="/register">
           <Register/>
+        </Route>
+        <Route path="/password_recovery">
+          <RecoveryPasswordForm/>
+        </Route>
+        <Route path="/password_reset/:token">
+          <RecoveryPasswordReset/>
         </Route>
         <Route path="/admin">
           <Admin/>
